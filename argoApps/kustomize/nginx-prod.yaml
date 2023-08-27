@@ -1,7 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kustom-nginx-app
+  name: kustom-nginx-prod
+  namespace: default
 spec:
   destination:
     name: 'gke_gke-test-395604_us-central1-c_cluster-1'
