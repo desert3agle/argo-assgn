@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kustom-nginx-app
+spec:
+  destination:
+    name: 'gke_gke-test-395604_us-central1-c_cluster-2'
+    namespace: "kustomize-nginx-staging"
+  source:
+    path: kustomize/kustomize-nginx-app/overlays/staging
+    repoURL: 'git@github.com:desert3agle/argo-assgn.git'
+    targetRevision: HEAD
+    kustomize:
+      namespace: kustomized-nginx-staging
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
