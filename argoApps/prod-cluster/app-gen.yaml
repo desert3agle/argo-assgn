@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: assgn-prod-apps
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - env: prod
+            project: default
+  template:
+    metadata:
+      name: 'assignment-{{env}}'
+      namespace: argocd
+    spec:
+      destination:
+        name: 'gke_gke-test-395604_us-central1-c_cluster-1'
+      project: '{{project}}'
+
+      # destination:
+      #   server: https://kubernetes.default.svc
+      #   namespace: default
+
+      ignoreDifferences:
+      - group: apps
+        kind: Deployment
+        namespace: default
+        jsonPointers:
+        - /spec/replicas
+      source:
+        directory:
+          recurse: true
+        path: 'kubectlManifests/{{env}}'
+        repoURL: 'git@github.com:desert3agle/argo-assgn.git'
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
