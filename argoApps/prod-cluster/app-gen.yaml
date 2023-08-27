@@ -16,6 +16,7 @@ spec:
     spec:
       destination:
         name: 'gke_gke-test-395604_us-central1-c_cluster-1'
+        namespace: "prod-apps"
       project: '{{project}}'
 
       # destination:
