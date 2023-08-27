@@ -55,5 +55,18 @@ Argo CD infra (assignment)
 │               ├── deployment.yaml
 │               ├── kustomization.yaml
 │               └── namespace.yaml
+└── screenshots
+    ├── apps-n-superapps-1.png
+    ├── apps-n-superapps.png
+    ├── clusters-cli.png
+    ├── clusters.png
+    ├── github-webhook.png
+    ├── hook-notifications.png
+    ├── kustomize-prod.png
+    ├── kustomize-staging.png
+    ├── prod-apps-n-hooks.png
+    ├── prod-cluster-apps.png
+    ├── staging-apps-n-hooks.png
+    └── staging-cluster-apps.png
 ```
 
