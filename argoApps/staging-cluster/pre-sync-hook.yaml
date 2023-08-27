@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pre-sync-hook-flock
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: flock-notification
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "-H"
+          - "Content-Type: application/json"
+          - "-d"
+          - "{\"text\": \"sync to start\"}"
+          - "https://api.flock.com/hooks/sendMessage/8dbfc174-b231-4817-b3fa-861b4489f719"
+      restartPolicy: Never
+  backoffLimit: 2
