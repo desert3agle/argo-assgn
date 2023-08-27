@@ -1,4 +1,4 @@
-Argo CD infra (assignment)
+Argo CD (assignment)
 
 - find all the screenshots in /screenshots folder 
 
