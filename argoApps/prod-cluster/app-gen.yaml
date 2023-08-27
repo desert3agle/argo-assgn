@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: assgn-prod-apps
-  namespace: argocd
+  namespace: default
 spec:
   generators:
     - list:
@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       name: 'assignment-{{env}}'
-      namespace: argocd
+      namespace: default
     spec:
       destination:
         name: 'gke_gke-test-395604_us-central1-c_cluster-1'
