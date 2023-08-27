@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: assgn-prod-apps
-  namespace: default
+  namespace: argocd
 spec:
   generators:
     - list:
@@ -12,23 +12,12 @@ spec:
   template:
     metadata:
       name: 'assignment-{{env}}'
-      namespace: default
+      namespace: argocd
     spec:
       destination:
         name: 'gke_gke-test-395604_us-central1-c_cluster-1'
         namespace: "prod-apps"
       project: '{{project}}'
-
-      # destination:
-      #   server: https://kubernetes.default.svc
-      #   namespace: default
-
-      ignoreDifferences:
-      - group: apps
-        kind: Deployment
-        namespace: default
-        jsonPointers:
-        - /spec/replicas
       source:
         directory:
           recurse: true

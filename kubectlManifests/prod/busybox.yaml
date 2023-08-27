@@ -21,7 +21,7 @@ spec:
             - containerPort: 80
           command: ["sh","-c"]
           args:
-            - "sleep 3600"
+            - "sleep 36000"
           resources:
             limits:
               memory: 50.0Mi
