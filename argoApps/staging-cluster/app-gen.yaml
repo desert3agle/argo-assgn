@@ -15,7 +15,7 @@ spec:
       namespace: argocd
     spec:
       destination:
-        name: 'gke_gke-test-395604_us-central1-c_cluster-1'
+        name: 'gke_gke-test-395604_us-central1-c_cluster-2'
         namespace: "staging-apps"
       project: '{{project}}'
       source:
